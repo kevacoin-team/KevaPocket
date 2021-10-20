@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./styles/App.css";
+import { RouterFragment } from "./view-fragments/RouterFragment";
+import { Route, Link } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RouterFragment>
+        <Route path="/" exact>
+          <div>
+            <h1>Router works</h1>
+            <Link to="/test">Test Router</Link>
+            <p>{window.location.hostname}</p>
+          </div>
+        </Route>
+        <Route path="/test">
+          <Link to="/">Go back</Link>
+          <div>Router still works</div>
+        </Route>
+      </RouterFragment>
     </div>
   );
 }
